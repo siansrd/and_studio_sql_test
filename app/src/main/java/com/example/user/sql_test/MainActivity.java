@@ -1,15 +1,15 @@
 package com.example.user.sql_test;
 
-import android.content.Context;
+
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -18,34 +18,77 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView mDate;
-    TextView mWordcount;
+    EditText mDate;
+    EditText mWordcount;
+    EditText mDuration;
+    Button mSave;
+
+    SQLiteDatabase mDb;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SQLiteDatabase mydatabase = openOrCreateDatabase("WriteTrack",MODE_PRIVATE,null);
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS Journal (Date VARCHAR, Wordcount VARCHAR);");
-        mydatabase.execSQL("INSERT INTO Journal VALUES('Jan','500');");
+        mDate  = (EditText) findViewById(R.id.editDate);
+        mWordcount  = (EditText) findViewById(R.id.editWordcount);
+        mDuration  = (EditText) findViewById(R.id.editDuration);
+        mSave   = (Button) findViewById(R.id.save);
+
+//     TO DELETE THE DATABASE
+        this.deleteDatabase("WriteTrack");
+
+        mDb = openOrCreateDatabase("WriteTrack",MODE_PRIVATE,null);
+        mDb.execSQL("CREATE TABLE IF NOT EXISTS Journal (Date VARCHAR, Wordcount VARCHAR, Duration VARCHAR);");
 
 
-        Cursor resultSet = mydatabase.rawQuery("Select * from Journal",null);
-        resultSet.moveToFirst();
-        String date = resultSet.getString(0);
-        String wordcount = resultSet.getString(1);
+        mSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        mDate = (TextView) findViewById(R.id.date);
-        mDate.setText(date);
+                String date = mDate.getText().toString();
+                String wordcount = mWordcount.getText().toString();
+                String duration = mDuration.getText().toString();
 
-        mWordcount = (TextView) findViewById(R.id.wordcount);
-        mWordcount.setText(wordcount);
+                mDb.execSQL("INSERT INTO Journal (date, wordcount, duration) VALUES('"+date+"', '"+wordcount+"', '"+duration+"');");
+                Toast.makeText(getApplicationContext(),"Saved Successfully", Toast.LENGTH_LONG).show();
 
+            }
 
+        });
 
     }
+
+
+
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.view_entries) {
+            Intent intent = new Intent(MainActivity.this, ViewEntries.class);
+//                intent.putExtra("answer", answer);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+
+    }
+
+
 }
+
+
 
 //public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 //

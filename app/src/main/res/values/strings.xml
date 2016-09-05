@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Sql_Test</string>
+    <string name="view_entries">View Entries</string>
 </resources>

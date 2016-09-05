@@ -4,54 +4,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
-    android:text=""
-    android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editDate" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Word Count" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editWordcount" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duration" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editDuration" />
+
+    <Button
+    android:id="@+id/save"
+    android:text="Save"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
 
-    <TextView
-    android:text=""
-    android:id="@+id/wordcount"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
 
-
-
-<!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Date"-->
-        <!--android:id="@+id/textViewDate" />-->
-
-    <!--<EditText-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/editDate" />-->
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Word Count"-->
-        <!--android:id="@+id/textViewWordcount" />-->
-
-    <!--<EditText-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/editWordcount" />-->
-
-    <!--<Button-->
-        <!--style="?android:attr/buttonStyleSmall"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Add"-->
-        <!--android:id="@+id/btnAdd" />-->
-
-    <!--<Button-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="View Entries"-->
-        <!--android:id="@+id/btnView" />-->
 
 
 </LinearLayout>

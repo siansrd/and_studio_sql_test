@@ -18,6 +18,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ViewEntries"
+            android:label="View Entries">
+        </activity>
+
     </application>
 
 </manifest>
