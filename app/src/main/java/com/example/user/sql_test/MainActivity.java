@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         this.deleteDatabase("WriteTrack");
 
         mDb = openOrCreateDatabase("WriteTrack",MODE_PRIVATE,null);
-        mDb.execSQL("CREATE TABLE IF NOT EXISTS Journal (Date VARCHAR, Wordcount VARCHAR, Duration VARCHAR);");
+        mDb.execSQL("CREATE TABLE IF NOT EXISTS Journal (Date VARCHAR, Wordcount INTEGER, Duration INTEGER);");
 
 
         mSave.setOnClickListener(new View.OnClickListener() {
@@ -48,8 +48,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String date = mDate.getText().toString();
-                String wordcount = mWordcount.getText().toString();
-                String duration = mDuration.getText().toString();
+                Integer wordcount = Integer.parseInt(mWordcount.getText().toString());
+                Integer duration = Integer.parseInt(mDuration.getText().toString());
+//                Integer duration = mDuration.getText();
+
 
                 mDb.execSQL("INSERT INTO Journal (date, wordcount, duration) VALUES('"+date+"', '"+wordcount+"', '"+duration+"');");
                 Toast.makeText(getApplicationContext(),"Saved Successfully", Toast.LENGTH_LONG).show();

@@ -23,7 +23,9 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editWordcount" />
+        android:id="@+id/editWordcount"
+        android:inputType="number"
+        android:hint="Word Count"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,7 +35,9 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editDuration" />
+        android:id="@+id/editDuration"
+        android:inputType="number"
+        android:hint="Duration"/>
 
     <Button
     android:id="@+id/save"
